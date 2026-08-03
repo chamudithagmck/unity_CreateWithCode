@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F54D4F09-CE3B-6305-6007-C14992BF309F}</ProjectGuid>
+    <ProjectGuid>{53F2696F-91F9-D403-3CD8-B368D375157F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -64,32 +64,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\MoveLeft.cs" />
+    <Compile Include="Assets\Scripts\CameraRotation.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\RepeatBackground.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <None Include="Assets\Course Library\_Source_Files\_LICENSE.txt" />
-    <None Include="Assets\Course Library\_Source_Files\Materials\UnlitVertexColour_Alpha.shader" />
     <Reference Include="UnityEngine.Purchasing">
-      <HintPath>F:/Projects/Unity Projects/Unity Course/3. Sound &amp; Effects/Project 3/Prototype 3/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
+      <HintPath>F:/Projects/Unity Projects/Unity Course/4. Gameplay Mechanics/Project 4/Prototype 4/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>F:/Projects/Unity Projects/Unity Course/3. Sound &amp; Effects/Project 3/Prototype 3/Library/ScriptAssemblies/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>F:/Projects/Unity Projects/Unity Course/4. Gameplay Mechanics/Project 4/Prototype 4/Library/ScriptAssemblies/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>F:/Projects/Unity Projects/Unity Course/3. Sound &amp; Effects/Project 3/Prototype 3/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>F:/Projects/Unity Projects/Unity Course/4. Gameplay Mechanics/Project 4/Prototype 4/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>F:/Projects/Unity Projects/Unity Course/3. Sound &amp; Effects/Project 3/Prototype 3/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>F:/Projects/Unity Projects/Unity Course/4. Gameplay Mechanics/Project 4/Prototype 4/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>F:/Projects/Unity Projects/Unity Course/3. Sound &amp; Effects/Project 3/Prototype 3/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>F:/Projects/Unity Projects/Unity Course/4. Gameplay Mechanics/Project 4/Prototype 4/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>F:/Projects/Unity Projects/Unity Course/3. Sound &amp; Effects/Project 3/Prototype 3/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>F:/Projects/Unity Projects/Unity Course/4. Gameplay Mechanics/Project 4/Prototype 4/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>F:/Projects/Unity Projects/Unity Course/3. Sound &amp; Effects/Project 3/Prototype 3/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>F:/Projects/Unity Projects/Unity Course/4. Gameplay Mechanics/Project 4/Prototype 4/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/UnityHUb/2018.4.30f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -293,7 +292,7 @@
       <HintPath>D:/UnityHUb/2018.4.30f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>F:/Projects/Unity Projects/Unity Course/3. Sound &amp; Effects/Project 3/Prototype 3/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>F:/Projects/Unity Projects/Unity Course/4. Gameplay Mechanics/Project 4/Prototype 4/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:/UnityHUb/2018.4.30f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

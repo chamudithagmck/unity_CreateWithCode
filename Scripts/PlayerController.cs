@@ -4,83 +4,71 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody _rBody;
-    private Animator playerAnim;
-    private AudioSource playerAudio;
-    public ParticleSystem explosionParticle;
-    public ParticleSystem dirtParticle;
 
-    public AudioClip jumpSound;
-    public AudioClip crashSound;
+    private Rigidbody playerRb;
+    private GameObject focalPoint;
+    public float speed = 10.0f;
 
+    public bool hasPowerup ;
+    private float powerUpStrenth = 15.0f;
 
-    public float jumpFroce = 10f;
-    public float gravityModifier;
+    public GameObject powerupIndicator;
 
 
-    public bool isOnGround = true;
-    public bool gameOver;
     void Start()
     {
-        _rBody = GetComponent<Rigidbody>();
-        playerAnim = GetComponent<Animator>();
-        playerAudio = GetComponent<AudioSource>();
 
-        Physics.gravity = Physics.gravity * gravityModifier;
+        playerRb = GetComponent<Rigidbody>();
+        focalPoint = GameObject.Find("Focal Point");
+        
     }
 
-    private void OnMouseDown()
-    {
-        isOnGround = false;
-        isOnGround = false;
-        playerAnim.SetTrigger("Jump_trig");
-        dirtParticle.Stop();
-
-        playerAudio.PlayOneShot(jumpSound, 1.0f);
-
-
-        _rBody.AddForce(Vector3.up * jumpFroce, ForceMode.Impulse);
-    }
+    
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && gameOver == false)
-        {
-            _rBody.AddForce(Vector3.up * jumpFroce, ForceMode.Impulse);
+        float forwardInput = Input.GetAxis("Vertical");
 
-            isOnGround = false;
-            playerAnim.SetTrigger("Jump_trig");
-            dirtParticle.Stop();
+        playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed);
 
-            playerAudio.PlayOneShot(jumpSound, 1.0f);
-
-
-        }
-
-
-
+        powerupIndicator.transform.position = transform.position + new Vector3(0, 0, 0);
+        
     }
 
-    private void OnCollisionEnter(Collision target)
+    private void OnTriggerEnter(Collider other)
     {
-        if (target.gameObject.CompareTag("Ground"))
+        if (other.CompareTag("Powerup"))
         {
-            isOnGround = true;
-            dirtParticle.Play();
-        }
-
-        else if (target.gameObject.CompareTag("Obstacle"))
-        {
-            Debug.Log(" Game Over !");
-            gameOver = true;
-
-            playerAnim.SetBool("Death_b", true);
-            playerAnim.SetInteger("DeathType_int", 1);
-
-            explosionParticle.Play();
-            dirtParticle.Stop();
-
-            playerAudio.PlayOneShot(crashSound, 3.0f);
+            hasPowerup = true;
+            powerupIndicator.gameObject.SetActive(true);
+            Destroy(other.gameObject);
+            StartCoroutine(PowerupCountdownRoutine());
         }
     }
 
-}//Class
+    IEnumerator PowerupCountdownRoutine()
+    {
+        yield return new WaitForSeconds(7);
+        hasPowerup = false;
+        powerupIndicator.gameObject.SetActive(false);
+
+    }
+
+
+
+
+
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy") && hasPowerup)
+        {
+            Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+
+            Vector3 awayFromPlayer = collision.gameObject.transform.position - transform.position;
+
+            enemyRigidbody.AddForce(awayFromPlayer * powerUpStrenth, ForceMode.Impulse);
+        }
+    }
+}
+
