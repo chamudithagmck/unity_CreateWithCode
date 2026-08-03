@@ -4,31 +4,55 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject obstaclePrefabs;
+    public GameObject enemyPrefab;
+    public GameObject powerupPrefab;
+    private float spawnRange = 9.0f;
 
-    private Vector3 spawnPos = new Vector3(25, 0, 0);
-    private float startDelay = 2;
-    private float repeatRate = 2;
 
-    private PlayerController _playerControllerScript;
+   public int enemyCount;
+    public int waveNumber = 1;
 
 
     void Start()
     {
-        _playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
-
-
-        InvokeRepeating("SapwnObstacle", startDelay, repeatRate); 
+        SpawnEnemyWave(waveNumber);
+        Instantiate(powerupPrefab, GenarateSpawnPosition(), powerupPrefab.transform.rotation);
     }
 
-  
-    void SapwnObstacle()
-    {
 
-        if(_playerControllerScript.gameOver == false)
-        {
-            Instantiate(obstaclePrefabs, spawnPos, obstaclePrefabs.transform.rotation);
+    void Update()
+    {
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
+        if (enemyCount == 0)
+         {
+            waveNumber++;
+            SpawnEnemyWave(waveNumber);
+
+            Instantiate(powerupPrefab, GenarateSpawnPosition(), powerupPrefab.transform.rotation);
+
+
         }
-          
+
+    }
+
+    void SpawnEnemyWave(int enemiesToSpawn)
+    {
+        for (int i = 0; i < enemiesToSpawn; i++)
+        {
+            Instantiate(enemyPrefab, GenarateSpawnPosition(), enemyPrefab.transform.rotation);
+        }
+
+    }
+
+    private Vector3 GenarateSpawnPosition()
+    {
+        float spawnPosX = Random.Range(-spawnRange, spawnRange);
+        float spawnPosZ = Random.Range(-spawnRange, spawnRange);
+
+        Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);
+
+        return randomPos;
+
     }
 }
